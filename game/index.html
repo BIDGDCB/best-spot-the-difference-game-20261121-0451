@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — Lantern Nights</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">&#9678;</span>
+      <div>
+        <h1>SPOT THE DIFFERENCE</h1>
+        <p class="subtitle">Lantern Nights &middot; three hand-drawn scenes, one sharp eye</p>
+      </div>
+    </div>
+    <div class="hud-stats">
+      <div class="stat" id="levelStat"><span class="stat-label">LEVEL</span><span class="stat-value" id="levelName">1 &middot; Lantern Market</span></div>
+      <div class="stat"><span class="stat-label">TIME LEFT</span><span class="stat-value" id="timeLeft">2:30</span></div>
+      <div class="stat counter"><span class="stat-label">STILL TO FIND</span><span class="stat-value" id="remaining">7 left</span></div>
+      <div class="stat"><span class="stat-label">SCORE</span><span class="stat-value" id="score">0</span></div>
+      <div class="stat"><span class="stat-label">HINTS</span><span class="stat-value" id="hints">3</span></div>
+    </div>
+    <div class="hud-buttons">
+      <button id="hintBtn" type="button" title="Hint (H)">&#128161; Hint</button>
+      <button id="pauseBtn" type="button" title="Pause (P)">&#10074;&#10074; Pause</button>
+      <button id="soundBtn" type="button" title="Sound (M)">&#128266; Sound</button>
+    </div>
+  </header>
+
+  <div id="timebar"><div id="timefill"></div></div>
+
+  <nav id="levelTabs" aria-label="Levels">
+    <button type="button" data-level="0" class="active">1 &middot; Lantern Market <span class="tab-diff">7 differences</span></button>
+    <button type="button" data-level="1">2 &middot; Cat Caf&eacute; <span class="tab-diff">8 differences</span></button>
+    <button type="button" data-level="2">3 &middot; Harbor Dawn <span class="tab-diff">9 differences</span></button>
+  </nav>
+
+  <main id="panels">
+    <figure class="panel">
+      <figcaption><span class="panel-tag">LEFT</span> Original</figcaption>
+      <canvas id="leftCanvas" width="560" height="420" aria-label="Left picture: the original scene"></canvas>
+    </figure>
+    <div id="versus" aria-hidden="true">VS</div>
+    <figure class="panel">
+      <figcaption><span class="panel-tag">RIGHT</span> Spot the changes</figcaption>
+      <canvas id="rightCanvas" width="560" height="420" aria-label="Right picture: the changed scene"></canvas>
+    </figure>
+  </main>
+
+  <section id="foundBar" aria-label="Differences found">
+    <span class="found-label">FOUND:</span>
+    <span id="foundChips"><em class="none-yet">Nothing yet &mdash; click a difference on either picture.</em></span>
+  </section>
+
+  <footer id="help">
+    <span><b>Click</b> a difference on either picture &middot; <b>Arrow keys</b> move the crosshair, <b>Enter</b> clicks it</span>
+    <span><b>H</b> hint &middot; <b>P</b> pause &middot; <b>R</b> restart &middot; <b>1&ndash;3</b> switch level &middot; wrong click costs 3 seconds</span>
+  </footer>
+
+  <div id="overlay" class="show">
+    <div id="overlayCard">
+      <p class="overlay-kicker">A SPOT-THE-DIFFERENCE GAME</p>
+      <h2 id="overlayTitle">Lantern Nights</h2>
+      <p id="overlayText">Two pictures hang side by side. They look the same &mdash; they are not.
+        Find every hidden change before the lanterns burn down. Some differences are
+        tiny on purpose: a missing lantern, a sign that changed its mind, a cat that
+        wandered off. Three scenes, 24 differences, one sharp eye.</p>
+      <div id="overlayStats"></div>
+      <button id="overlayBtn" type="button">Start playing</button>
+      <p class="overlay-hint">Mouse + keyboard &middot; works fully offline &middot; no sign-up, no ads</p>
+    </div>
+  </div>
+
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
